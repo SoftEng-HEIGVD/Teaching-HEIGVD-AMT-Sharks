@@ -1,0 +1,35 @@
+<server description="Sample Liberty server">
+    <featureManager>
+        <feature>webProfile-8.0</feature>
+
+        <!--Enable the following features to run tests with Arquillian managed container-->
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <!--
+    <variable name="system.http.port" defaultValue="9081"/>
+    <variable name="system.http.host" defaultValue="flow.ch"/>
+    -->
+    <variable name="default.http.port" defaultValue="9081"/>
+    <variable name="default.https.port" defaultValue="9443"/>
+
+    <logging consoleLogLevel="INFO" />
+
+    <applicationMonitor updateTrigger="mbean"/>
+
+    <webApplication location="sharks.war" contextRoot="/" />
+
+    <httpEndpoint host="*" httpPort="${default.http.port}" 
+        httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
+
+
+    <!--
+    <quickStartSecurity userName="admin" userPassword="admin" />
+
+    <keyStore id="defaultKeyStore" password="password" location="key.jks" type="JKS"/>
+
+    <remoteFileAccess>
+        <writeDir>${server.config.dir}/dropins</writeDir>
+    </remoteFileAccess>
+    -->
+</server>
